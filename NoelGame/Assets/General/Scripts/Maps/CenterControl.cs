@@ -8,15 +8,22 @@ public class CenterControl : MonoBehaviour
 {
 
     private OnlineMaps _api;
+    public GameObject Root;
+    public PnInCenter pnInCenter;
     // Use this for initialization
     private OnlineMapsMarker _searchMarker;
     public GameObject pnButtonCenter;
     public Transform parentPnbuttonCenter;
     Vector2 curentPosition;
+    public int ChooseCenter = -1;
     void Start()
     {
         _api = OnlineMaps.instance;
         Invoke("ViewCurrentPosition", .5f);
+    }
+    public void OnShow(bool _isShow)
+    {
+        Root.gameObject.SetActive(_isShow);
     }
     void ViewCurrentPosition()
     {
@@ -42,6 +49,19 @@ public class CenterControl : MonoBehaviour
         }
         yield return null;
     }
+    public void OnClickChooseCenter()
+    {
+        if(ChooseCenter!=-1)
+        {
+            Root.gameObject.SetActive(false);
+            pnInCenter.OnShow(true);
+            Debug.Log("Ban da chon center " + ChooseCenter);
+        }else
+        {
+            Debug.Log("Please Choose a center");
+        }
+       
+    }
     public void OncenterClick(int id)
     {
         Vector2 position = Datacenter.instance.listCenter[id].pos;
@@ -57,11 +77,15 @@ public class CenterControl : MonoBehaviour
                 _searchMarker.label = "center Localtion";
             }
 
-            if (_api.zoom < 13)
-                _api.zoom = 13;
+            if (_api.zoom < 10)
+                _api.zoom = 10;
 
             _api.position = position;
             _api.Redraw();
+            ChooseCenter = id;
+        }else
+        {
+            Debug.Log("Please Open services");
         }
     }
     public void CheckInTheCenter(Vector2 yourPos, int centerID)

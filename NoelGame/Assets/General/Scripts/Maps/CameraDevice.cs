@@ -8,6 +8,7 @@ public class CameraDevice : MonoBehaviour
     public RawImage camImage;
     WebCamTexture webCam;
     public GameObject PnQuestion;
+    
     void Start()
     {
         webCam = new WebCamTexture();
@@ -15,10 +16,15 @@ public class CameraDevice : MonoBehaviour
         camImage.material.mainTexture = webCam;       
         webCam.Play();
     }
+    public void OnHide()
+    {
+        gameObject.SetActive(false);
+    }
     public void OpenTheBox()
     {
         //animation Open The box
         PnQuestion.gameObject.SetActive(true);
+        OnHide();
     }
 
 

@@ -33,10 +33,10 @@ public class GSHome : GSTemplate
     protected override void Init()
     {
         base.Init();
-        localeSearch.Show(false);
-       localeCurrent.Show(false);
-        localeObj.SetActive(true);
-        directionsObj.gameObject.SetActive(false);
+     //   localeSearch.Show(false);
+    //   localeCurrent.Show(false);
+       // localeObj.SetActive(true);
+     //   directionsObj.gameObject.SetActive(false);
         OnlineMapsLocationService.instance.StartLocationService();
 
         _api = OnlineMaps.instance;
