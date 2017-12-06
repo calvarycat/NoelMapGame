@@ -21,8 +21,19 @@ public static class PathManager
     }
     public static string ListQuest
     {
-       
+
         get { return "Jsonfile/ListQuest"; }
+    }
+    public static string ListQuestScratch
+    {
+
+        get { return "Jsonfile/ListQuestScratch"; }
+    }
+
+    public static string ListDragAndDrop
+    {
+
+        get { return "Jsonfile/ListDragAndDrop"; }
     }
 }
 

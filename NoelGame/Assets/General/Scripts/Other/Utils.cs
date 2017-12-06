@@ -74,7 +74,14 @@ public class Utils
 
         return false;
     }
+    // bắt đầu từ số 0 tương ứng với A
+    public static string GetLableAnswer(int lab)
+    {
+        char rs = (char)65;
+         rs = Convert.ToChar(lab+65);      
+        return rs.ToString().ToUpper();
 
+    }
     public static string TextureToString(Texture2D value)
     {
         byte[] byteArray = value.EncodeToPNG();

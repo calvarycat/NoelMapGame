@@ -54,7 +54,7 @@ public class CenterControl : MonoBehaviour
         if(ChooseCenter!=-1)
         {
             Root.gameObject.SetActive(false);
-            pnInCenter.OnShow(true);
+            pnInCenter.InitCenter(ChooseCenter);
             Debug.Log("Ban da chon center " + ChooseCenter);
         }else
         {
@@ -133,9 +133,23 @@ public class CenterControl : MonoBehaviour
         bt.Init(initCounter, Datacenter.instance.listCenter[initCounter].name, kc);
         obj.transform.localScale = new Vector3(1, 1, 1);
         bt.GetComponentInChildren<Button>().onClick.AddListener(delegate { OncenterClick(c); });
-  //      Debug.Log(initCounter);
+
+
+        bt.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(delegate { GotoCenter(c); });
+
         initCounter++;
         Sort();
+    }
+
+    public void GotoCenter(int centerID)
+    {
+        if (centerID != -1)
+        {
+            Root.gameObject.SetActive(false);
+            pnInCenter.InitCenter(centerID);
+            Debug.Log("Ban da chon center " + centerID);
+        }
+       
     }
     public List<BtnCenter> SortedList;
     int ix;

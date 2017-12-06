@@ -8,7 +8,9 @@ public class CameraDevice : MonoBehaviour
     public RawImage camImage;
     WebCamTexture webCam;
     public GameObject PnQuestion;
-    
+    public GameObject gift;
+    public ControlQuestion controlQuestion;
+
     void Start()
     {
         webCam = new WebCamTexture();
@@ -20,10 +22,22 @@ public class CameraDevice : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+    public void OnEnable()
+    {
+        int randomOpen = Random.Range(1, 2);
+        Invoke("ShowTheGift", randomOpen);
+    }
+    
+    void ShowTheGift()
+    {
+        gift.gameObject.SetActive(true);
+    }
     public void OpenTheBox()
     {
-        //animation Open The box
+
+        controlQuestion.InitMultipleChoise();
         PnQuestion.gameObject.SetActive(true);
+
         OnHide();
     }
 
