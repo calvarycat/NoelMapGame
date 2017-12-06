@@ -16,6 +16,8 @@ public class ScratchControl : MonoBehaviour
     public GameObject RootScratch;
     private GroupScratch g;
 
+    public PNDragAndDropControl dragAndDropControl;
+
     public void InitScratch()
     {
 
@@ -78,6 +80,7 @@ public class ScratchControl : MonoBehaviour
     void ShowDragAndDropGame()
     {
         RootDragAndDrop.gameObject.SetActive(true);
+        dragAndDropControl.InitDragAndDropData();      
         RootScratch.gameObject.SetActive(false);
 
 
